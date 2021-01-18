@@ -26,7 +26,7 @@ public class Monde {
 	 * 
 	 */
 	public static void afficherInformations() {
-		//TODO: 
+		//TODO: NIY
 	}
 	
 }
