@@ -6,7 +6,7 @@ public interface ICombattant {
 
     // Getters et Setters
     public String getNom();
-    public int getDMG();
+    public int getPuissance();
     public int getPDV();
     
     public boolean estVivant();

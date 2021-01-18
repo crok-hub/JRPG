@@ -2,7 +2,7 @@ package org.cro.jrpg.personnage;
 
 public abstract class Combattant implements ICombattant {
 	private int pdv; // Points de vie
-	private int dmg; // Points de dommage
+	private int puissance; // Points de dommage
 	private String nom;
 	
 	/**
@@ -13,7 +13,7 @@ public abstract class Combattant implements ICombattant {
 	 */
 	public Combattant(int pdv, int dmg, String nom) {
 		this.pdv = pdv;
-		this.dmg = dmg;
+		this.puissance = dmg;
 		this.nom = nom;
 	}
 	
@@ -21,7 +21,7 @@ public abstract class Combattant implements ICombattant {
 	 * Fait subir une attaque a l'adversaire.
 	 */
     public void attaquer(ICombattant adversaire) {
-    	adversaire.defendre(this.dmg);
+    	adversaire.defendre(this.puissance);
     }
     
     /**
@@ -43,8 +43,8 @@ public abstract class Combattant implements ICombattant {
 		return this.pdv;
 	}
 	
-	public int getDMG() {
-		return this.dmg;
+	public int getPuissance() {
+		return this.puissance;
 	}
 	
 	public String getNom() {
@@ -52,6 +52,6 @@ public abstract class Combattant implements ICombattant {
 	}
 	
 	public String toString() {
-		return this.nom + ": PV[" + this.pdv + "], DMG[" + this.dmg + "]";
+		return this.nom + ": PV[" + this.pdv + "], DMG[" + this.puissance + "]";
 	}
 }
