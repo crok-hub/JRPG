@@ -2,6 +2,7 @@ package org.cro.jrpg.mundus;
 
 import java.util.Scanner;
 
+import org.cro.jrpg.personnage.ICombattant;
 import org.cro.jrpg.personnage.Monstre;
 import org.cro.jrpg.personnage.Personnage;
 
@@ -42,8 +43,8 @@ public class Monde {
 		int d, f;
 		int pv, atk;
 		
-		d = (int) Math.random() * Monde.debutNom.length;
-		f = (int) Math.random() * Monde.finNom.length;
+		d = (int) (Math.random() * Monde.debutNom.length);
+		f = (int) (Math.random() * Monde.finNom.length);
 		nom = Monde.debutNom[d] + Monde.finNom[f];
 		
 		pv = (int) (Math.random() * 1324);
@@ -58,7 +59,7 @@ public class Monde {
 	 * @param personnage
 	 * @param monstre
 	 */
-	public static void combat (Personnage personnage, Monstre monstre) {
+	public static void combat (ICombattant personnage, ICombattant monstre) {
 		boolean tour = true;
 		
 		while(personnage.estVivant() && monstre.estVivant()) {
@@ -67,12 +68,12 @@ public class Monde {
 			System.out.println(monstre);
 		    if (tour) {
 		    	System.out.println(monstre.getNom() + " attaque !");
-		        personnage.subir(monstre.getDMG());
+		        personnage.attaquer(monstre);
 		        System.out.println(personnage);
 		    }
 		    else {
 		    	System.out.println(personnage.getNom() + " attaque !");
-		        monstre.subir(personnage.getDMG());
+		        monstre.attaquer(personnage);
 		        System.out.println(monstre);
 		    }
 		    tour = !tour;

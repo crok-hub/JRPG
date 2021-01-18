@@ -1,6 +1,6 @@
 package org.cro.jrpg.personnage;
 
-public abstract class Combattant {
+public abstract class Combattant implements ICombattant {
 	private int pdv; // Points de vie
 	private int dmg; // Points de dommage
 	private String nom;
@@ -17,6 +17,28 @@ public abstract class Combattant {
 		this.nom = nom;
 	}
 	
+	/**
+	 * Fait subir une attaque a l'adversaire.
+	 */
+    public void attaquer(ICombattant adversaire) {
+    	adversaire.defendre(this.dmg);
+    }
+    
+    /**
+     * Subir une attaque. Soustrait {@code degats} au points de vie.
+     */
+    public void defendre(int degats) {
+    	this.pdv -= degats;
+    }
+	
+	/**
+	 * Vérifie si le nombre de points de vie est supérieur a 0.
+	 * @return {@code true} si > 0, {@code false} sinon
+	 */
+	public boolean estVivant() {
+		return this.pdv > 0;
+	}
+	
 	public int getPDV() {
 		return this.pdv;
 	}
@@ -27,19 +49,6 @@ public abstract class Combattant {
 	
 	public String getNom() {
 		return this.nom;
-	}
-	
-	public void subir(int dmg) {
-		this.pdv -= dmg;
-	}
-	
-	/**
-	 * Vérifie si le nombre de points de vie est supérieur a 0.
-	 * @return {@code true} si > 0, {@code false} sinon
-	 */
-	public boolean estVivant() {
-		return this.pdv > 0;
-		
 	}
 	
 	public String toString() {
