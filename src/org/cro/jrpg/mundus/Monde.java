@@ -1,14 +1,14 @@
 package org.cro.jrpg.mundus;
 
-import java.util.Dictionary;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
 import org.cro.jrpg.archetype.Classe;
 import org.cro.jrpg.archetype.classe.Barbare;
 import org.cro.jrpg.archetype.classe.Voleur;
+import org.cro.jrpg.personnage.Groupe;
 import org.cro.jrpg.personnage.ICombattant;
 import org.cro.jrpg.personnage.Monstre;
 import org.cro.jrpg.personnage.Personnage;
@@ -59,6 +59,22 @@ public class Monde {
 	}
 	
 	/**
+	 * Créer un groupe de 1 à n personnage.
+	 * 
+	 * @param nombre
+	 * @return 
+	 */
+	public static ICombattant groupePersonnageFactory(int nombre) {
+		ArrayList<ICombattant> l = new ArrayList<ICombattant>();
+		
+		for (int i = 0; i != nombre; i++) {
+			l.add(Monde.personnageFactory());
+		}
+		
+		return new Groupe(l);
+	}
+	
+	/**
 	* Créer un monstre avec tous ses attributs
 	* Son nom est determiné par {@code Monde.debutNom} et {@code Monde.finNom}
 	* 
@@ -67,7 +83,7 @@ public class Monde {
 	**/
 	public static Monstre monstreFactory() {
 		String nom;
-		int d, f;
+		int d, f, i;
 		int pv, atk;
 		
 		d = (int) (Math.random() * Monde.debutNom.length);
@@ -78,6 +94,22 @@ public class Monde {
 		atk = (int) (Math.random() * 100);
 		
 		return new Monstre(pv, atk, nom);	
+	}
+	
+	/**
+	 * Créer un groupe de 1 à n monstre.
+	 * 
+	 * @param nombre
+	 * @return 
+	 */
+	public static ICombattant groupeMonstreFactory(int nombre) {
+		ArrayList<ICombattant> l = new ArrayList<ICombattant>();
+	
+		for (int i = 0; i != nombre; i++) {
+			l.add(Monde.monstreFactory());
+		}
+		
+		return new Groupe(l);
 	}
 	
 	/**

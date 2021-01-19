@@ -314,7 +314,6 @@ public static Classe GetClasse(string nom)
 this.classes.add(nom, new Classe(...));
 ```
 
-___
 8.2: Changer la methode pour personnageFactory pour demander la classe du personnage grâce a la methode GetClasse et un scanner
 
 ___
