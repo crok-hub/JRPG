@@ -313,11 +313,12 @@ public static Classe GetClasse(string nom)
 ```java
 this.classes.add(nom, new Classe(...));
 ```
+
 ___
 8.2: Changer la methode pour personnageFactory pour demander la classe du personnage grâce a la methode GetClasse et un scanner
 
 ___
- Exercice 9: Les groupes
+## Exercice 9: Les groupes
  
  9.1: Creer une classe Groupe implé mentant ICombattant ayant en attribut une liste de ICombattant
 
@@ -338,8 +339,9 @@ ___
      
      9.4.3: Creer une methode Groupe CreationGroupePersonnage(int nombrePersonnage) qui creer un groupe
      en ajoutant "nombrePersonnage" Personnage creer avec la methode de creation de personnage
+     
 ___
- Exercice 10: Menu et Creation de classe par l'utilisateur
+## Exercice 10: Menu et Creation de classe par l'utilisateur
  
  10.1: Creer une methode "Genese" dans la classe Monde qui affiche le texte suivant (sans saut de ligne)
  ```
@@ -383,8 +385,9 @@ une liste d'attaques. Puis demander a l'utilisateur de choisir l'une des deux.
 Recomencer jusqu'a avoir ajouter 14 attaques ou defences
 
 10.8.5: Ajouter la classe dans la liste des classes et revenir au menu principal
+
 ___
- Exercice 11: Hold the door!!
+## Exercice 11: Hold the door!!
  
  11.1: Creer une nouvelle interface Sort qui implemente les getter des attributs nom et definition et une methode Information.
  
@@ -420,14 +423,16 @@ ___
      
  11.10: Changer la methode CreationClasse en choisissant aleatoirement deux sorts.
      Soit de la defence soit de l'attaque
+     
 ___
- Exercice 12:
+## Exercice 12:
  Implementer des Attaques:
      * une qui renvoie des degats et qui soigne le lanceur (VampirismAttaque)
      * une qui a des chances de critique (qui double ses degats) (CritiqueAttaque)
      * une qui inglige des degat aussi au lanceur (SacrificeAttaque)
      
- Exercice 13(optionnel): Un vrai Jeu
+___
+## Exercice 13(optionnel): Un vrai Jeu
  13.1: Ajouter des attaques:
      [Nom                ][Type                  ][Valeurs]
      Coup blanc          || BasicAttaque         || degat: 10 toucher:0.9
@@ -444,11 +449,13 @@ ___
  13.2: Ajouter des defences de la meme maniere.
  
  13.3: Creer des classes avec vos attaques et defences
- ___
- Exercice 14:
+ 
+___
+## Exercice 14:
  COMMENTEZ VOTRE CODE!!! ET DOCUMENTER VOS METHODES ET CLASSES!! L'INDENTATION... et faites des testes
- ___
- Exervice 15: LE DONJON!!! 
+ 
+___
+## Exervice 15: LE DONJON!!! 
  15.1: Creer une interface Salle qui implemente la methode Entrer(ICombattant Combattant)
  
  15.2: Creer une classe FontaineSalle qui implemente l'interface Salle le methode Entre qui soigne 
@@ -468,8 +475,8 @@ ___
  
  15.6: Creer une methode CreateDonjon dans votre Monde qui creer des donjons aleatoirement.
 
-   ___  
- Exercice 16: Amelioration des classes et des statistiques:
+___
+## Exercice 16: Amelioration des classes et des statistiques:
  16.1: Ajouter aux classes et Combattant les attributs: int pointDeVieMax, pointAction, pointActionParTour.
      16.1.1: La vie du joueur ne peut depasser pointDeVieMax
      16.1.2: Les caracteristiques du Combattant sont definie par celle de sa classe
@@ -484,8 +491,9 @@ ___
  16.3: Mettre a jour le code et les valeurs
  
  16.4: Changer la liste de classe en dictionnaire et faire les changement adequoite.
- ___
- Exercice 17: Personnage vraiment jouable
+ 
+___
+## Exercice 17: Personnage vraiment jouable
  17.1: Creer une classe JoeurPersonnage qui herite de la classe Personnage
  
  17.2: Override la methode Attaque pour que le joueur puisse choisir une attaque:
@@ -504,10 +512,10 @@ ___
  
  17.6: Ameliorer l'affichage des combats:
      A chaque action affiche un message en fonction de l'attaque ou defence
-     A chaque affiche les informations sur les groupes et leurs pdv
-     
+     A chaque affiche les informations sur les groupes et leurs pdv    
  
- Exercice 18: Ajout des niveaux
+___
+## Exercice 18: Ajout des niveaux
  18.1: Dans la l'interface ICombattant, ajouter les attributs niveaux et experiences
  
  18.2: Dans la methode set d'experience de la classe Personnage definir aussi le niveau comme
@@ -525,7 +533,8 @@ ___
  
  18.6: Ajoute l'experience a chaques Combattant de l'equipe gagnante du combat
  
- Exercice 19(Optionnel): Pour ceux qui veulent concurencer les plus grands
+___
+## Exercice 19(Optionnel): Pour ceux qui veulent concurencer les plus grands
  Mettre en place un systeme de tests unitaires
  Mettre en place une connexion a une base de données pour sauvegarder les parties(Prochainement)
  Mettre en place une un systeme d'Object
@@ -533,20 +542,20 @@ ___
  Mettre en place un systeme de royaumes regroupant des Guildes, avec une carte et des factions de joueurs
  Mettre en place une interface graphique
  Mettre en place un chat
- Appeler le jeu World of Aston: Wrath of the CSharp
+ Appeler le jeu World of Aston: Wrath of the CSharp 
  
- Exercice 20: Les lyceens de la base de donnée (ADO)
+___
+## Exercice 20: Les lyceens de la base de donnée (ADO)
  to bo continued...
  
- Exercice 21: Le coeur pas net (.NET Core)
+___
+## Exercice 21: Le coeur pas net (.NET Core)
  soon th
  
- Exercice 22: Etre React(JS)
+___
+## Exercice 22: Etre React(JS)
  Pas moi
      
- Exercice 23: Et ben c'est bieng...
+___
+## Exercice 23: Et ben c'est bieng...
  Bravo, vous avez terminé la formation java
-
-
-
-
