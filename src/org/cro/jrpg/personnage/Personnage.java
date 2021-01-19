@@ -1,5 +1,7 @@
 package org.cro.jrpg.personnage;
 
+import java.util.List;
+
 import org.cro.jrpg.archetype.Classe;
 import org.cro.jrpg.personnage.attaque.IAttaque;
 
@@ -14,11 +16,10 @@ public class Personnage extends Combattant {
 		this(pdv, pui, nom);
 		this.classe = classe;
 	}
-
-	@Override
-	public void attaquer(ICombattant adversaire, IAttaque attaque) {
-		// TODO Auto-generated method stub
-		
+	
+	public Personnage(int pdv, int pui, String nom, Classe classe, List<IAttaque> attaques) {
+		super(pdv, pui, nom, attaques);
+		this.classe = classe;
 	}
 
 }

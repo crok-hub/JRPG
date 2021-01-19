@@ -1,5 +1,8 @@
 package org.cro.jrpg.personnage;
 
+import java.util.List;
+
+import org.cro.jrpg.personnage.attaque.AttaqueBasic;
 import org.cro.jrpg.personnage.attaque.IAttaque;
 
 public abstract class Combattant implements ICombattant {
@@ -7,16 +10,25 @@ public abstract class Combattant implements ICombattant {
 	private int puissance; // Points de dommage
 	private String nom;
 	
+	private List<IAttaque> attaques;
+	
 	/**
 	 * Un nouveau Combattant avec un nombre de points de vie, points de dégât/dommage et un nom.
+	 * 
 	 * @param pdv - Points de vie
-	 * @param dmg - Points de dommage
+	 * @param pui - Points de dommage
 	 * @param nom
 	 */
-	public Combattant(int pdv, int dmg, String nom) {
+	public Combattant(int pdv, int pui, String nom) {
 		this.pdv = pdv;
-		this.puissance = dmg;
+		this.puissance = pui;
 		this.nom = nom;
+		this.attaques = List.of(AttaqueBasic.getInstance());
+	}
+	
+	public Combattant(int pdv, int pui, String nom, List<IAttaque> attaques) {
+		this(pdv, pui, nom);
+		this.attaques = attaques;
 	}
 	
 	/**
@@ -35,6 +47,7 @@ public abstract class Combattant implements ICombattant {
 	
 	/**
 	 * Vérifie si le nombre de points de vie est supérieur a 0.
+	 * 
 	 * @return {@code true} si > 0, {@code false} sinon
 	 */
 	public boolean estVivant() {
@@ -51,6 +64,11 @@ public abstract class Combattant implements ICombattant {
 	
 	public String getNom() {
 		return this.nom;
+	}
+	
+	@Override
+	public List<IAttaque> getAttaques() {
+		return attaques;
 	}
 	
 	public String toString() {

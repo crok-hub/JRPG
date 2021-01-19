@@ -1,7 +1,5 @@
 package org.cro.jrpg.archetype;
 
-import org.cro.jrpg.personnage.attaque.IAttaque;
-
 public interface Classe {
 
 	/**
@@ -9,11 +7,5 @@ public interface Classe {
 	 * @return le nom de cette classe
 	 */
 	public String getNom();
-	
-	/**
-	 * Liste de toutes les attaque de cette classe.
-	 * @return un iterable d'attaques
-	 */
-	public Iterable<IAttaque> getAttaques();
 	
 }

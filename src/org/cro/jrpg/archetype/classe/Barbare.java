@@ -1,19 +1,16 @@
 package org.cro.jrpg.archetype.classe;
 
-import java.util.ArrayList;
-
+import org.cro.jrpg.archetype.Classe;
 import org.cro.jrpg.archetype.Guerrier;
-import org.cro.jrpg.personnage.attaque.AttaqueBasic;
-import org.cro.jrpg.personnage.attaque.AttaquePuissante;
-import org.cro.jrpg.personnage.attaque.IAttaque;
 
 public class Barbare implements Guerrier {
-	private final String nom = "Chevalier";
+	private final String nom = "Barbare";
 	private int vigueur;
-	private Iterable<IAttaque> attaques;
+	
+	private static Barbare INSTANCE = new Barbare();
 	
 	public Barbare() {
-		this.attaques = new ArrayList<IAttaque>(new AttaqueBasic(), new AttaquePuissante());
+		this.vigueur = 100;
 	}
 	
 	@Override
@@ -22,13 +19,12 @@ public class Barbare implements Guerrier {
 	}
 
 	@Override
-	public Iterable<IAttaque> getAttaques() {
-		return this.attaques;
-	}
-
-	@Override
 	public int getVigueur() {
 		return this.vigueur;
+	}
+	
+	public static Classe getInstance() {
+		return INSTANCE;
 	}
 
 }

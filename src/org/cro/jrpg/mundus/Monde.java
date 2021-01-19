@@ -1,10 +1,17 @@
 package org.cro.jrpg.mundus;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import org.cro.jrpg.archetype.classe.Barbare;
 import org.cro.jrpg.personnage.ICombattant;
 import org.cro.jrpg.personnage.Monstre;
 import org.cro.jrpg.personnage.Personnage;
+import org.cro.jrpg.personnage.attaque.AttaqueBasic;
+import org.cro.jrpg.personnage.attaque.AttaqueCritique;
+import org.cro.jrpg.personnage.attaque.AttaquePuissante;
+import org.cro.jrpg.personnage.attaque.IAttaque;
 
 public class Monde {
 	public static String[] debutNom = {"Chevalier","Chien","Garuda","Vermine"};
@@ -22,7 +29,7 @@ public class Monde {
 		int pv, atk;
 		
 		pv = (int) (Math.random() * 1324);
-		atk = (int) (Math.random() * 1234);
+		atk = (int) (Math.random() * 100);
 		
 		System.out.println("Personnage: Choisisez un nom :");
 			
@@ -30,7 +37,7 @@ public class Monde {
 				
 		sc.close();
 		
-		return new Personnage(pv, atk, nom);	
+		return new Personnage(pv, atk, nom, Barbare.getInstance(), List.of(AttaqueBasic.getInstance(), AttaquePuissante.getInstance(), AttaqueCritique.getInstance()));	
 	}
 	
 	/**
@@ -48,7 +55,7 @@ public class Monde {
 		nom = Monde.debutNom[d] + Monde.finNom[f];
 		
 		pv = (int) (Math.random() * 1324);
-		atk = (int) (Math.random() * 1234);
+		atk = (int) (Math.random() * 100);
 		
 		return new Monstre(pv, atk, nom);	
 	}
@@ -61,20 +68,23 @@ public class Monde {
 	 */
 	public static void combat (ICombattant personnage, ICombattant monstre) {
 		boolean tour = true;
+		int i;
 		
 		while(personnage.estVivant() && monstre.estVivant()) {
 			System.out.println("______________________");
 			System.out.println(personnage);
 			System.out.println(monstre);
 		    if (tour) {
-		    	System.out.println(monstre.getNom() + " attaque !");
-		        personnage.attaquer(monstre);
-		        System.out.println(personnage);
+		    	i = (int) (Math.random() * personnage.getAttaques().size());
+		    	System.out.println(personnage.getNom() + " lance " + personnage.getAttaques().get(i).getNom());
+		        personnage.attaquer(monstre, personnage.getAttaques().get(i));
+		        System.out.println(monstre);
 		    }
 		    else {
-		    	System.out.println(personnage.getNom() + " attaque !");
-		        monstre.attaquer(personnage);
-		        System.out.println(monstre);
+		    	i = (int) (Math.random() * monstre.getAttaques().size());
+		    	System.out.println(monstre.getNom() + " lance " + monstre.getAttaques().get(i).getNom());
+		        monstre.attaquer(personnage, monstre.getAttaques().get(i));
+		        System.out.println(personnage);
 		    }
 		    tour = !tour;
 		}
