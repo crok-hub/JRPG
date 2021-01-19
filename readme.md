@@ -5,8 +5,8 @@ Le but de cet exercice est de développer un petit jeu de rôle.
  
  Pensez a gitter ce petit projet! 
  En le documentant vous aurez tout ce qu'il faut savoir en Java!
- ___
- ## Exercice 1 : Création d'un personnage
+___
+## Exercice 1 : Création d'un personnage
  
 1.1 Créer une classe Personnage:
 * Definir les attributs d'instances suivants:
@@ -63,7 +63,7 @@ static class Monde
 ```
 
 ___
- ## Exercice 3: Les monstres!!!
+## Exercice 3: Les monstres!!!
  
  3.1: Créer une classe Monstre héritant de la classe Personnage
 
