@@ -168,6 +168,7 @@ public static void main(String[] args)
 }
 ```
      
+___
 ## Exercice 5: Un peu d'ordre.
  
  5.1: Creer une interface ***ICombattant*** qui prototype les methodes:
@@ -214,6 +215,7 @@ public static void combat(ICombattant combattant1, ICombattant combattant2)
 }
 ```
 
+___
 ## Exercice 6: POWERRRR!!!!
  
  6.1: Creer une interface "IAttaque" ayant comme methode:
@@ -258,7 +260,7 @@ class BasicAttaque : IAttaque
 ```
 
 ___ 
- Exercice 7: Les classes!!
+## Exercice 7: Les classes!!
  
  7.1: Creer une classe ***Classe*** ayant comme attributs une liste d'attaques et un nom.
 
@@ -295,8 +297,8 @@ class Classe
 
  7.7: Testez votre code
  
- ___
- Exercice 8: Choisir une classe
+___
+## Exercice 8: Choisir une classe
  
  8.1: Créer un attribut static dictionnaire<String,Classe> classes dans la classe Monde. Creer une methode getClasse(string)
  ```java
