@@ -1,4 +1,4 @@
-package org.cro.jrpg.personnage.interaction;
+package org.cro.jrpg.personnage.attaque;
 
 import org.cro.jrpg.personnage.ICombattant;
 
@@ -13,11 +13,12 @@ public interface IAttaque {
 	 * @param cible le combattant qui se defend
 	 * @return {@code true} si l'attaque à réussi, {@code false} sinon.
 	 */
-    public int attaque(ICombattant lanceur, ICombattant cible);
+    public int inflige(ICombattant lanceur, ICombattant cible);
 
     // Getters et Setters
     public String getNom();
     public String getDescription();
     public int getDegats();
     public double getChanceToucher();
+    
 }

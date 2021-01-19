@@ -55,7 +55,7 @@ public class Monde {
 	
 
 	/**
-	 * *Fait joué tour à tour le personnage et le monstre tant que l'un ou l'autre a encore des points de vie.
+	 * *Fait joué tour à tour le personnage et le monstre tant-que l'un ou l'autre a encore des points de vie.
 	 * @param personnage
 	 * @param monstre
 	 */
@@ -81,7 +81,6 @@ public class Monde {
 		if (personnage.estVivant()) System.out.println(personnage.getNom() + " à gagné !");
 		else if (monstre.estVivant()) System.out.println(monstre.getNom() + " à gagné !");
 		else System.out.println("Match nul !");
-		
 	}
 	
 	/**

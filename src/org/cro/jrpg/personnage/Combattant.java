@@ -1,5 +1,7 @@
 package org.cro.jrpg.personnage;
 
+import org.cro.jrpg.personnage.attaque.IAttaque;
+
 public abstract class Combattant implements ICombattant {
 	private int pdv; // Points de vie
 	private int puissance; // Points de dommage
@@ -20,8 +22,8 @@ public abstract class Combattant implements ICombattant {
 	/**
 	 * Fait subir une attaque a l'adversaire.
 	 */
-    public void attaquer(ICombattant adversaire) {
-    	adversaire.defendre(this.puissance);
+    public void attaquer(ICombattant adversaire, IAttaque attaque) {
+    	adversaire.defendre(attaque.inflige(this, adversaire));
     }
     
     /**

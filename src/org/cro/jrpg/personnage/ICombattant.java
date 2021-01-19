@@ -1,7 +1,9 @@
 package org.cro.jrpg.personnage;
 
+import org.cro.jrpg.personnage.attaque.IAttaque;
+
 public interface ICombattant {
-    public void attaquer(ICombattant adversaire);
+    public void attaquer(ICombattant adversaire, IAttaque attaque);
     public void defendre(int degats);
 
     // Getters et Setters

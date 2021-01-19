@@ -1,9 +1,7 @@
 package org.cro.jrpg.archetype;
 
-public interface Guerrier {
+public interface Guerrier extends Classe {
 	
-	public int fureur();
-	
-	public void attaqueAuCorpsACorps();
+	public int getVigueur();
 	
 }
