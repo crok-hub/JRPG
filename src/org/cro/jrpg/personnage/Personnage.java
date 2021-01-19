@@ -22,4 +22,8 @@ public class Personnage extends Combattant {
 		this.classe = classe;
 	}
 
+	public String toString() {
+		return super.toString() + " " + this.classe.getNom();
+	}
+	
 }

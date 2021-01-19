@@ -26,5 +26,9 @@ public class Barbare implements Guerrier {
 	public static Classe getInstance() {
 		return INSTANCE;
 	}
+	
+	public String toString() {
+		return this.nom;
+	}
 
 }

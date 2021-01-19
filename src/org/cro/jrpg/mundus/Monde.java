@@ -1,49 +1,69 @@
 package org.cro.jrpg.mundus;
 
-import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
+import org.cro.jrpg.archetype.Classe;
 import org.cro.jrpg.archetype.classe.Barbare;
+import org.cro.jrpg.archetype.classe.Voleur;
 import org.cro.jrpg.personnage.ICombattant;
 import org.cro.jrpg.personnage.Monstre;
 import org.cro.jrpg.personnage.Personnage;
 import org.cro.jrpg.personnage.attaque.AttaqueBasic;
 import org.cro.jrpg.personnage.attaque.AttaqueCritique;
 import org.cro.jrpg.personnage.attaque.AttaquePuissante;
-import org.cro.jrpg.personnage.attaque.IAttaque;
+
 
 public class Monde {
 	public static String[] debutNom = {"Chevalier","Chien","Garuda","Vermine"};
 
 	public static String[] finNom = {" agréssif"," de feu"," de la mort"," fourbe"," discret"};
+	
+	public static HashMap<String, Classe> classes = new HashMap<String, Classe>() {{ put("Barbare", Barbare.getInstance()); put("Voleur", Voleur.getInstance()); }};
 
 	/**
 	 * Créer un personnage avec tous ses attributs 
-	 * Demande a l'utilisateur d'entrer le nom du personnage.
+	 * Demande a l'utilisateur d'entrer le nom du personnage et de choisir une classe.
+	 * 
 	 * @return une instance de la classe Personnage correctement instancié.
 	 */
 	public static Personnage personnageFactory() {
 		Scanner sc = new Scanner(System.in);
 		String nom;
+		Classe classe;
 		int pv, atk;
 		
 		pv = (int) (Math.random() * 1324);
 		atk = (int) (Math.random() * 100);
 		
-		System.out.println("Personnage: Choisisez un nom :");
+		System.out.println("Choisisez un nom de personnage:");
 			
 		nom = sc.next();
+		
+		System.out.println(Monde.classes);
+		System.out.println("Choisir classe :");
+		
+		classe = Monde.getClasse(sc.next());
+		
+		if (classe == null) {
+			System.out.println("defaut: Barbare");
+			classe = Monde.getClasse("Barbare");
+		}
 				
 		sc.close();
 		
-		return new Personnage(pv, atk, nom, Barbare.getInstance(), List.of(AttaqueBasic.getInstance(), AttaquePuissante.getInstance(), AttaqueCritique.getInstance()));	
+		return new Personnage(pv, atk, nom, classe, List.of(AttaqueBasic.getInstance(), AttaquePuissante.getInstance(), AttaqueCritique.getInstance()));	
 	}
 	
 	/**
 	* Créer un monstre avec tous ses attributs
 	* Son nom est determiné par {@code Monde.debutNom} et {@code Monde.finNom}
+	* 
 	* @return une instance de la classe Monstre correctement instancié.
+	* 
 	**/
 	public static Monstre monstreFactory() {
 		String nom;
@@ -60,9 +80,19 @@ public class Monde {
 		return new Monstre(pv, atk, nom);	
 	}
 	
-
+	/**
+	 * Retourne une classe en fonction du nom.
+	 * 
+	 * @param nom de la classe
+	 * @return une Classe, {@code null} sinon
+	 */
+	public static Classe getClasse(String nom) {
+		return Monde.classes.get(nom);
+	}
+	
 	/**
 	 * *Fait joué tour à tour le personnage et le monstre tant-que l'un ou l'autre a encore des points de vie.
+	 * 
 	 * @param personnage
 	 * @param monstre
 	 */
