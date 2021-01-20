@@ -3,6 +3,7 @@ package org.cro.jrpg.mundus;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import org.cro.jrpg.archetype.Classe;
@@ -43,7 +44,7 @@ public class Monde {
 			
 		nom = sc.next();
 		
-		System.out.println(Monde.classes);
+		System.out.println(Monde.classes.keySet());
 		System.out.println("Choisir classe :");
 		
 		classe = Monde.getClasse(sc.next());
@@ -53,7 +54,7 @@ public class Monde {
 			classe = Monde.getClasse("Barbare");
 		}
 				
-		sc.close();
+		//sc.close();
 		
 		return new Personnage(pv, atk, nom, classe, List.of(AttaqueBasic.getInstance(), AttaquePuissante.getInstance(), AttaqueCritique.getInstance()));	
 	}
@@ -123,13 +124,14 @@ public class Monde {
 	}
 	
 	/**
-	 * *Fait joué tour à tour le personnage et le monstre tant-que l'un ou l'autre a encore des points de vie.
+	 * *Fait joué tour à tour le personnage et le monstre tant-que l'un ou l'autre est encore en vie.
 	 * 
 	 * @param personnage
 	 * @param monstre
 	 */
 	public static void combat (ICombattant personnage, ICombattant monstre) {
 		boolean tour = true;
+		Random r = new Random();
 		int i;
 		
 		while(personnage.estVivant() && monstre.estVivant()) {
@@ -137,13 +139,13 @@ public class Monde {
 			System.out.println(personnage);
 			System.out.println(monstre);
 		    if (tour) {
-		    	i = (int) (Math.random() * personnage.getAttaques().size());
+		    	i = r.nextInt(personnage.getAttaques().size());
 		    	System.out.println(personnage.getNom() + " lance " + personnage.getAttaques().get(i).getNom());
 		        personnage.attaquer(monstre, personnage.getAttaques().get(i));
 		        System.out.println(monstre);
 		    }
 		    else {
-		    	i = (int) (Math.random() * monstre.getAttaques().size());
+		    	i = r.nextInt(monstre.getAttaques().size());
 		    	System.out.println(monstre.getNom() + " lance " + monstre.getAttaques().get(i).getNom());
 		        monstre.attaquer(personnage, monstre.getAttaques().get(i));
 		        System.out.println(personnage);

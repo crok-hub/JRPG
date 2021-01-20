@@ -2,6 +2,7 @@ package org.cro.jrpg.personnage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.cro.jrpg.personnage.attaque.IAttaque;
 
@@ -14,16 +15,16 @@ public class Groupe implements ICombattant {
 
 	@Override
 	public void attaquer(ICombattant adversaire, IAttaque attaque) {
-		int i = (int) Math.random() * this.combattants.size();
+		ICombattant attaquant = this.enEtatDeCombatre();
 		
-		adversaire.defendre(attaque.inflige(this.combattants.get(i), adversaire));
+		if (attaquant != null) adversaire.defendre(attaque.inflige(attaquant, adversaire));
 	}
 
 	@Override
 	public void defendre(int degats) {
-		int i = (int) Math.random() * this.combattants.size();
+		ICombattant defenseur = this.enEtatDeCombatre();
 
-		this.combattants.get(i).defendre(degats);
+		defenseur.defendre(degats);
 	}
 
 	@Override
@@ -51,6 +52,28 @@ public class Groupe implements ICombattant {
 		return false;
 	}
 
+	@Override
+	public boolean estMort() {
+		return !this.estVivant();
+	}
+	
+	/** 
+	 * Retourne un combattant aléatoire en etat de combattre.
+	 * 
+	 * @return un combattant, null sinon
+	 */
+	private ICombattant enEtatDeCombatre() {
+		Random r = new Random();
+		ICombattant combattant = null;
+		
+		if (this.estVivant()) {
+			do {
+				combattant = this.combattants.get(r.nextInt(this.combattants.size()));
+			} while (combattant.estMort());
+		}
+		return combattant;
+	}
+	
 	@Override
 	public List<IAttaque> getAttaques() {
 		ArrayList<IAttaque> l = new ArrayList<IAttaque>();

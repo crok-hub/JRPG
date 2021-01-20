@@ -31,9 +31,7 @@ public abstract class Combattant implements ICombattant {
 		this.attaques = attaques;
 	}
 	
-	/**
-	 * Fait subir une attaque a l'adversaire.
-	 */
+	@Override
     public void attaquer(ICombattant adversaire, IAttaque attaque) {
     	adversaire.defendre(attaque.inflige(this, adversaire));
     }
@@ -45,23 +43,27 @@ public abstract class Combattant implements ICombattant {
     	this.pdv -= degats;
     }
 	
-	/**
-	 * Vérifie si le nombre de points de vie est supérieur a 0.
-	 * 
-	 * @return {@code true} si > 0, {@code false} sinon
-	 */
+    @Override
 	public boolean estVivant() {
 		return this.pdv > 0;
 	}
 	
+    @Override
+	public boolean estMort() {
+		return !this.estVivant();
+	}
+	
+    @Override
 	public int getPDV() {
 		return this.pdv;
 	}
 	
+    @Override
 	public int getPuissance() {
 		return this.puissance;
 	}
 	
+    @Override
 	public String getNom() {
 		return this.nom;
 	}
@@ -71,7 +73,8 @@ public abstract class Combattant implements ICombattant {
 		return attaques;
 	}
 	
+	@Override
 	public String toString() {
-		return this.nom + ": PV[" + this.pdv + "], DMG[" + this.puissance + "]";
+		return this.nom + ": PV[" + this.pdv + "] DMG[" + this.puissance + "]";
 	}
 }
